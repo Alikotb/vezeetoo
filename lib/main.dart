@@ -1,29 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:vezeeto/core/routing/app_router.dart';
+import 'package:vezeeto/vezeetoo.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( VezeetooApp(
+    appRouter: AppRouter(),
+  ));
 }
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      builder: (context, child) {
-        return MediaQuery(
-          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-          child: Container(
-            child: Text("data"),
-          ),
-        );
-      },
-    );
-  }
-
-}
-
-
-
-
