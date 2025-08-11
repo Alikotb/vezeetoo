@@ -7,6 +7,7 @@ import '../../features/onBoarding/onBoarding_screen.dart';
 
 class AppRouter{
   Route generateRoute(RouteSettings settings) {
+    final args = settings.arguments;// this allows you to pass arguments to the route
     switch (settings.name) {
       case Routes.onBoarding:
         return CupertinoPageRoute(
