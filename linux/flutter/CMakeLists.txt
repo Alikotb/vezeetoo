@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.10)
 
 set(EPHEMERAL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ephemeral")
 
-# Configuration provided via flutter tool.
+# Configuration provided via flutter_native_splash.yaml tool.
 include(${EPHEMERAL_DIR}/generated_config.cmake)
 
 # TODO: Move the rest of this into files in ephemeral. See
@@ -72,7 +72,7 @@ add_dependencies(flutter flutter_assemble)
 # === Flutter tool backend ===
 # _phony_ is a non-existent file to force this command to run every time,
 # since currently there's no way to get a full input/output list from the
-# flutter tool.
+# flutter_native_splash.yaml tool.
 add_custom_command(
   OUTPUT ${FLUTTER_LIBRARY} ${FLUTTER_LIBRARY_HEADERS}
     ${CMAKE_CURRENT_BINARY_DIR}/_phony_

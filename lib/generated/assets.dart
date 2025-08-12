@@ -2,7 +2,9 @@
 class Assets {
   Assets._();
 
-  static const String imagesImage2 = 'assets/images/doctor_image.png';
+  static const String imagesDoctorImage = 'assets/images/doctor_image.png';
+  static const String imagesSplash = 'assets/images/splash.png';
+  static const String imagesSplashAndroid12Logo = 'assets/images/splash_android12_logo.png';
   static const String svgsLogo = 'assets/svgs/logo.svg';
   static const String svgsLogoBack = 'assets/svgs/logo_back.svg';
 
