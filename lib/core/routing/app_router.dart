@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vezeeto/core/di/depenedency_injection.dart';
 import 'package:vezeeto/core/routing/routes.dart';
+import 'package:vezeeto/features/home/ui/HomeScreen.dart';
 import 'package:vezeeto/features/login/logic/login_cubit.dart';
 
 import '../../features/login/loginScreen.dart';
@@ -22,7 +23,10 @@ class AppRouter {
                 child: const LoginScreen(),
               ),
         );
-      // Add more routes here as needed
+      case Routes.home:
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
+
+    // Add more routes here as needed
       default:
         return MaterialPageRoute(
           builder:

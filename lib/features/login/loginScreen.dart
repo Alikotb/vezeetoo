@@ -1,24 +1,18 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vezeeto/core/theme/Style.dart';
-import 'package:vezeeto/core/widgets/app_text_form_filed.dart';
 import 'package:vezeeto/features/login/widgets/Already_Have_An_Account_Text.dart';
 import 'package:vezeeto/features/login/widgets/Terms_And_Conditions_Text.dart';
+import 'package:vezeeto/features/login/widgets/email_and_password.dart';
+import 'package:vezeeto/features/login/widgets/login_bloc_listener.dart';
 
-import '../../core/theme/AppColors.dart';
 import '../../core/widgets/App_Text_Btn.dart';
+import 'data/model/login_request_body.dart';
+import 'logic/login_cubit.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final formKey = GlobalKey<FormState>();
-  bool isPasswordVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -37,50 +31,31 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyles.font14GrayRegular,
                 ),
                 SizedBox(height: 36.h),
-                Form(
-                  key: formKey,
-                  child: Column(
-                    children: [
-                      AppTextFormField(hintText: "email"),
-                      SizedBox(height: 18.h),
-                      AppTextFormField(
-                        hintText: "password",
-                        obscureText: isPasswordVisible,
-                        suffixIcon: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              isPasswordVisible = !isPasswordVisible;
-                            });
-                          },
-                          child: Icon(
-                            isPasswordVisible
-                                ? Icons.visibility_off
-                                : Icons.visibility,
-                            color: ColorsManager.mainBlue,
-                          ),
-                        ),
+                Column(
+                  children: [
+                    const EmailAndPassword(),
+                    SizedBox(height: 21.h),
+                    Align(
+                      alignment: AlignmentDirectional.centerEnd,
+                      child: Text(
+                        "Forgot Password?",
+                        style: TextStyles.font13BlueRegular,
                       ),
-                      SizedBox(height: 24.h),
-                      Align(
-                        alignment: AlignmentDirectional.centerEnd,
-                        child: Text(
-                          "Forgot Password?",
-                          style: TextStyles.font13BlueRegular,
-                        )
-                      ),
-                      SizedBox(height: 40.h),
-                      AppTextBtn(
-                        onPressed: (){},
-                        btnText: "Login",
-                        textStyle: TextStyles.font16WhiteSemiBold,
-                      ),
-                      SizedBox(height: 16.h),
-                      const TermsAndConditionsText(),
-                      SizedBox(height: 60.h),
-                      const AlreadyHaveAnAccountText(),
-
-                    ],
-                  ),
+                    ),
+                    SizedBox(height: 40.h),
+                    AppTextBtn(
+                      onPressed: () {
+                        validateThenLogin(context);
+                      },
+                      btnText: "Login",
+                      textStyle: TextStyles.font16WhiteSemiBold,
+                    ),
+                    SizedBox(height: 16.h),
+                    const TermsAndConditionsText(),
+                    SizedBox(height: 60.h),
+                    const AlreadyHaveAnAccountText(),
+                    const LoginBlocListener(),
+                  ],
                 ),
               ],
             ),
@@ -88,5 +63,16 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void validateThenLogin(BuildContext context) {
+    if(context.read<LoginCubit>().formKey.currentState!.validate()){
+      context.read<LoginCubit>().emmitDoLoginState(
+        LoginRequestBody(
+          email:  context.read<LoginCubit>().emailController.text,
+          password:  context.read<LoginCubit>().passwordController.text,
+        )
+      );
+    }
   }
 }
