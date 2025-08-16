@@ -4,7 +4,10 @@ import 'package:vezeeto/core/di/depenedency_injection.dart';
 import 'package:vezeeto/core/routing/routes.dart';
 import 'package:vezeeto/features/home/ui/HomeScreen.dart';
 import 'package:vezeeto/features/login/logic/login_cubit.dart';
+import 'package:vezeeto/features/sign_up/logic/sign_up_cubit.dart';
+import 'package:vezeeto/features/sign_up/ui/sign_up_screen.dart';
 
+import '../../features/login/data/model/login_response.dart';
 import '../../features/login/loginScreen.dart';
 import '../../features/onBoarding/onBoarding_screen.dart';
 
@@ -23,10 +26,21 @@ class AppRouter {
                 child: const LoginScreen(),
               ),
         );
-      case Routes.home:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case Routes.signUp:
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider(
+                create: (context) => getIt<SignUpCubit>(),
+                child: SignUpScreen(),
+              ),
+        );
 
-    // Add more routes here as needed
+      case Routes.home:
+        return MaterialPageRoute(
+          builder: (_) => HomeScreen(data: args as LoginResponse),
+        );
+
+      // Add more routes here as needed
       default:
         return MaterialPageRoute(
           builder:

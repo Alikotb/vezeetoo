@@ -28,7 +28,7 @@ class LoginBlocListener extends StatelessWidget {
           },
           success: (data) {
             context.pop();
-            context.pushNamed(Routes.home, arguments: data);
+            context.pushReplacementNamed(Routes.home, arguments: data);
           },
           error: (text) {
             context.pop();
@@ -36,13 +36,13 @@ class LoginBlocListener extends StatelessWidget {
               context: context,
               barrierDismissible: false,
               builder:
-                  (context) =>  AlertDialog(
+                  (context) => AlertDialog(
                     icon: Icon(Icons.error, color: Colors.red, size: 32),
                     content: Text(text, style: TextStyles.font14DarkBlueMedium),
                     actions: [
                       TextButton(
                         onPressed: () => context.pop(),
-                        child:  Text(
+                        child: Text(
                           "OK",
                           style: TextStyles.font14DarkBlueMedium,
                         ),

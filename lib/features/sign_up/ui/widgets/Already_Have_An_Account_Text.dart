@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
+import 'package:vezeeto/core/routing/routes.dart';
 import 'package:vezeeto/core/theme/Style.dart';
+import 'package:vezeeto/core/utils/extentions/extentions.dart';
 
 class AlreadyHaveAnAccountText extends StatelessWidget {
   const AlreadyHaveAnAccountText({super.key});
@@ -7,7 +10,7 @@ class AlreadyHaveAnAccountText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RichText(
-       textAlign: TextAlign.center,
+      textAlign: TextAlign.center,
       text: TextSpan(
         children: [
           TextSpan(
@@ -15,11 +18,14 @@ class AlreadyHaveAnAccountText extends StatelessWidget {
             style: TextStyles.font13DarkBlueRegular,
           ),
           TextSpan(
-            text: "Sign up",
-            style:TextStyles.font13BlueSemiBold,
+              text: "Login", style: TextStyles.font13BlueSemiBold,
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                context.pushReplacementNamed(Routes.login);
+              },
           ),
-        ]
-      )
+        ],
+      ),
     );
   }
 }

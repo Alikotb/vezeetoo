@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vezeeto/core/theme/Style.dart';
 
-import '../../../core/theme/AppColors.dart';
+import '../theme/AppColors.dart';
 
 class PasswordValidation extends StatelessWidget {
   final bool hasUpperCase;

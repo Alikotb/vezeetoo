@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vezeeto/core/theme/Style.dart';
-import 'package:vezeeto/features/login/widgets/Already_Have_An_Account_Text.dart';
-import 'package:vezeeto/features/login/widgets/Terms_And_Conditions_Text.dart';
+import 'package:vezeeto/features/login/widgets/don_not_have_an_account_Text.dart';
+import 'package:vezeeto/core/widgets/Terms_And_Conditions_Text.dart';
 import 'package:vezeeto/features/login/widgets/email_and_password.dart';
 import 'package:vezeeto/features/login/widgets/login_bloc_listener.dart';
 
@@ -53,7 +53,7 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(height: 16.h),
                     const TermsAndConditionsText(),
                     SizedBox(height: 60.h),
-                    const AlreadyHaveAnAccountText(),
+                    const DonNotHaveAnAccountText(),
                     const LoginBlocListener(),
                   ],
                 ),

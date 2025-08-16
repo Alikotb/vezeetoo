@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/theme/AppColors.dart';
 import '../../../core/widgets/app_text_form_filed.dart';
 import '../logic/login_cubit.dart';
-import 'Password_validation.dart';
+import '../../../core/widgets/Password_validation.dart';
 
 class EmailAndPassword extends StatefulWidget {
   const EmailAndPassword({super.key});

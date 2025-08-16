@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../core/theme/Style.dart';
+import '../theme/Style.dart';
 
 class TermsAndConditionsText extends StatelessWidget {
   const TermsAndConditionsText({super.key});
