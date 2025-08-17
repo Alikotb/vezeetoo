@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:vezeeto/core/routing/app_router.dart';
 
-import 'package:vezeeto/main.dart';
 import 'package:vezeeto/vezeetoo.dart';
 
 void main() {

@@ -29,6 +29,20 @@ android {
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
+    flavorDimensions += "default"
+
+    productFlavors {
+        create("development") {
+            dimension = "default"
+            applicationIdSuffix = ".development"
+            resValue("string", "app_name", "Vezeeto Development")
+        }
+        create("production") {
+            dimension = "default"
+            resValue("string", "app_name", "Vezeeto Production")
+        }
+    }
+
 
     buildTypes {
         release {
